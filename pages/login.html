@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Login</title>
+</head>
+<body>
+    <div id="app-container" class="u-center-absolute">
+        <form class="form" id="form" action="javascript:void(0);">
+            <div class="form__input">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="form__input">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <button id="submit" class="btn btn-tertiary u-margin-top-1">Log-In</button>
+        </form>
+    </div>
+    <script>
+        var form = document.getElementById( "form" ),
+            submitBtn = document.getElementById( "submit" ),
+            email = document.getElementById( "email" ),
+            password = document.getElementById( "password" );
+
+        function addEvent( event, domElement, cb ) {
+            if ( domElement.addEventListener )  // W3C DOM
+            domElement.addEventListener( event, cb.bind( cb, domElement ) );
+            else if ( domElement.attachEvent ) { // IE DOM
+                domElement.attachEvent( "on" + event, cb.bind( cb, domElement ) );
+            }
+            else { // No much to do
+                domElement[ "on" + event ] = cb.bind( cb, domElement );
+            }
+        }
+
+        function customHttpRequest( method, url, headers, body, cb ) {
+            var xhr = new XMLHttpRequest();
+            xhr.open( method, url, true );
+            if ( cb !== null ) {
+                xhr.onload = function() {
+                    cb.call( cb, xhr.response );
+                };
+            }
+            if ( headers !== null ) {
+                for (var i = 0; i < headers.length; ++i) {
+                    xhr.setRequestHeader(headers[i].name, headers[i].value);
+                }
+            }
+            xhr.send( body !== null && JSON.stringify( body ) );
+        }
+
+        function createError( message ) {
+            var error = document.createElement( "div" );
+            error.classList.add( "warning" );
+            error.innerHTML = `<p>${ message }</p>`;
+            form.insertAdjacentElement( "beforebegin", error );
+        }
+
+        function displayErrors( errors ) {
+            for ( var i = 0; i < errors.length; ++i ) {
+                createError( errors[i] );
+            }
+        }
+
+        function handleResponse( response ) {
+            var parsedResponse = JSON.parse( response );
+            
+            if ( "errors" in parsedResponse ) {
+                displayErrors( parsedResponse.errors );
+                return;
+            }
+            var token = parsedResponse.token;
+            document.cookie = `minesweeper-auth-token=${token}; SameSite=None; Secure`;
+            window.location.replace('/minesweeper/game');
+        }
+
+        function handleFormSubmission() {
+            var headers = [
+                {
+                    name: "Content-Type",
+                    value: "application/json"
+                }
+            ]
+            var body = {
+                email: email.value,
+                password: password.value
+            }
+            customHttpRequest( 
+                "POST", 
+                "/minesweeper/login",
+                headers,
+                body, 
+                handleResponse 
+            );
+        }
+
+        addEvent("click", submitBtn, handleFormSubmission);
+    </script>
+</body>
+</html>

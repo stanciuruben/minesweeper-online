@@ -1,0 +1,323 @@
+@font-face {
+	font-family: Joystix;
+	src: url('./joystix-monospace.ttf');
+}
+
+*,
+*::before,
+*::after {
+	font-family: Joystix;
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	box-sizing: border-box;
+	background-color: #22272c;
+}
+
+/* UTILITY CLASSES */
+
+.u-center-absolute {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.u-text-allign-center {
+	text-align: center;
+}
+
+.u-display-none {
+	display: none;
+}
+
+.u-display-block {
+	display: block;
+}
+
+.u-margin-1 {
+	margin: 1rem;
+}
+
+.u-margin-top-1 {
+	margin-top: 1rem;
+}
+
+/* TYPOGRAPHY CLASSES */
+
+.heading-primary {
+	font-size: 6rem;
+	color: #958a56;
+}
+
+.heading-secondary {
+	font-size: 3rem;
+	color: #f4f4f4;
+}
+
+.text-white {
+	color: #dfdfdf;
+}
+
+.text-green {
+	color: rgb(0, 128, 0);
+}
+
+.text-red {
+	color: rgb(255, 0, 0);
+}
+
+/* ELEMENTS */
+
+#loading-screen {
+	height: 60rem;
+	width: 60rem;
+	padding-top: 24rem;
+	text-align: center;
+}
+
+.loading-animation {
+	display: inline-block;
+	border: 2rem solid #576164;
+	border-radius: 50%;
+	border-top: 2rem solid #dfdfdf;
+	width: 12rem;
+	height: 12rem;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: rotate( 0deg ); }
+	100% { transform: rotate( 360deg ); }
+  }
+
+.select-options {
+	color: #dfdfdf;
+}
+
+.form {
+	font-size: 1.5rem;
+	color: #dfdfdf;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.form__input {
+	width: 100%;
+	font-size: 1.5rem;
+}
+
+.form__input input {
+	background-color: #dfdfdf;
+	border: none;
+}
+
+.btn,
+.btn:visited,
+.btn:link {
+	text-decoration: none;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 3rem;
+}
+
+.btn-primary {
+	background-color: #958a56;
+	color: #f4f4f4;
+	padding: 1rem 2rem;
+	opacity: 1;
+}
+
+.btn-secondary {
+	color: #dfdfdf;
+	opacity: 1;
+}
+
+.btn-tertiary {
+	font-size: 1.5rem;
+	background-color: #dfdfdf;
+	color: #22272c;
+	padding: 1rem;
+	opacity: 1;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-tertiary:hover {
+	opacity: 0.8;
+}
+
+.mine-field-line {
+	margin: 0;
+	padding: 0;
+	display: block;
+	line-height: 0;
+	font-size: 0;
+}
+
+.mine-field-line::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.cell-size-15 {
+	width: 3.99rem;
+	height: 3.99rem;
+	line-height: 3.99rem;
+	font-size: 3.99rem;
+}
+
+.cell-size-20 {
+	width: 2.99rem;
+	height: 2.99rem;
+	line-height: 2.99rem;
+	font-size: 2.99rem;
+}
+
+.cell-size-25 {
+	width: 2.39rem;
+	height: 2.39rem;
+	line-height: 2.39rem;
+	font-size: 2.39rem;
+}
+
+.cell {
+	display: block;
+	float: left;
+	text-align: center;
+	user-select: none;
+}
+
+.cell-flag {
+	box-shadow: inset 1rem 1rem 0 #dfdfdf, inset -1rem -1rem 0 #dfdfdf;
+}
+
+.cell-mine {
+	background-color: #ff0000;
+}
+
+.cell-1 {
+	color: rgb(0, 0, 255);
+}
+
+.cell-2 {
+	color: rgb(0, 128, 0);
+}
+
+.cell-3 {
+	color: rgb(255, 0, 0);
+}
+
+.cell-4 {
+	color: rgb(0, 0, 128);
+}
+
+.cell-5 {
+	color: rgb(128, 0, 0);
+}
+
+.cell-6 {
+	color: rgb(0, 128, 128);
+}
+
+.cell-7 {
+	color: rgb(0, 0, 0);
+}
+
+.cell-8 {
+	color: rgb(128, 128, 128);
+}
+
+.cell-hidden {
+	background-color: #576164;
+	cursor: pointer;
+	transition: background-color 0.4s;
+}
+
+.cell-hidden:hover {
+	opacity: 0.9;
+}
+
+.cell-hidden:active {
+	background-color: #8c9ea3;
+}
+
+.cell-uncovered {
+	background-color: #8c9ea3;
+}
+
+/* IDs */
+
+#user-info {
+	white-space: nowrap;
+	font-size: 1.5rem;
+	position: absolute;
+	top: 50%;
+	left: 110%;
+	transform: translateY(-50%);
+}
+
+#game-final-status {
+	z-index: 100;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	user-select: none;
+}
+
+#game-final-status .container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	white-space: nowrap;
+	text-align: center;
+}
+
+#game-container {
+	position: relative;
+	width: 60rem;
+}
+
+#game-menu > * {
+	margin: 1.5rem 0;
+}
+
+#game-menu {
+	font-size: 2rem;
+}
+
+#game-menu button {
+	font-size: 3rem;
+}
+
+#mine-field {
+	position: relative;
+	width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+	html {
+		font-size: 40%;
+	}
+}
+
+@media screen and (max-width: 1250px) {
+	#user-info {
+		top: 110%;
+		left: 50%;
+		transform: translateX( -50% );
+	}
+}

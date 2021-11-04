@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Minesweeper-Game</title>
+</head>
+<body>
+    <div id="app-container" class="u-center-absolute">
+        <h1 class="heading-primary text u-text-allign-center">Minesweeper</h1>
+        <div id="game-container">
+            <div id="loading-screen">
+                <div class="loading-animation"></div>
+            </div>
+            <div id="game-final-status">
+                <div class="container">
+                    <h2 id="game-final-status--message" class="heading-secondary"><!--Added with JS--></h2>
+                    <button id="return-button" class="btn btn-secondary">Return To Menu</button>
+                </div>
+            </div>
+            <aside id="user-info">
+                <dl>
+                    <dt id="user-name" class="text-white"></dt>
+                    <dd id="user-score" class="text-white"></dd>
+                    <dd id="user-total-score" class="text-white"></dd>
+                </dl>
+                <button id="save-button" class="btn btn-tertiary" >Save Progress &rarr;</button>
+            </aside>
+            <section id="game-menu" class="u-text-allign-center text-white">
+                <div id="select-size" class="select-options">
+                    <label>Size</label>
+                    <button id="size-option-prev" class="btn btn-secondary option">&larr;</button>
+                    <label class="current-option" id="size-value">15</label>
+                    <button id="size-option-next" class="btn btn-secondary option">&rarr;</button>
+                </div>
+                <div id="select-difficulty" class="select-options">
+                    <label>Difficulty</label>
+                    <button id="difficulty-option-prev" class="btn btn-secondary option">&larr;</button>
+                    <label class="current-option" id="difficulty-value">easy</label>
+                    <button id="difficulty-option-next" class="btn btn-secondary option">&rarr;</button>
+                </div>
+                <button id="start-button" class="btn btn-primary">Start Game</button>
+            </section>
+            <section id="mine-field">
+                <!--Added with JS-->
+            </section>
+        </div>
+    </div>
+    <noscript>Your browser does not load/support JavaScript. Please update it or use another browser!</noscript>
+    <script src="/socket.io/socket.io.min.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
+</body>
+</html>

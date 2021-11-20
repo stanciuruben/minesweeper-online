@@ -1,6 +1,6 @@
 # minesweeper-online
 
-Tools used:   Node,   Express,   MongoDB,   Socket.io,    Bcrypt,    Javascript,    Html,    Css.
+Tools used:   Node,   Express,   MongoDB,   Socket.io,    Jsonwebtoken,    Bcrypt,    Javascript,    Html,    Css.
 
 The goal for this project was to make a copy of the minesweeper game that is almost impossible to cheat in.
 After making a minesweeper game who runs locally in the browser; I realized that users could change the data locally, and have better scores or even see the position of the mines.
@@ -8,6 +8,10 @@ After making a minesweeper game who runs locally in the browser; I realized that
 To play this game you have to register with an email and a password.
 Your data is stored on mongoDB and the password gets encrypted with bcrypt.
 It's very safe!
+
+Authentication is made with JWT.
+Everytime you log in or refresh the game, the server ask for the JWT witch gets stored in a cookie after getting registred or logging in
+If there is no cookie or the token is expired the user gets rerouted to the login-register site.
 
 In this app I moved all the data in a database, the client has only access to a controller that sends user input to the server and receives the data already processed.
 Then passes that processed data to the view who dispalys everything in the browser.

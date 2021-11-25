@@ -1,6 +1,6 @@
 # minesweeper-online
 
-Tools used:   Node,   Express,   MongoDB,   Socket.io,    Jsonwebtoken,    Bcrypt,    Javascript,    Html,    Css.
+Tools used:   ***Node,   Express,   MongoDB,   Socket.io,    Jsonwebtoken,    Bcrypt,    Javascript,    Html,    Css.***
 
 The goal for this project was to make a copy of the minesweeper game that is almost impossible to cheat in.
 After making a minesweeper game who runs locally in the browser; I realized that users could change the data locally, and have better scores or even see the position of the mines.
@@ -22,5 +22,5 @@ On the server socket.io listens for requests and processes the sent data and sen
 The best thing is that with socket.io there can be multiple users connected, for each user a new game instace gets created and the data never gets mixed around.
 
 The game saves your score whenever you win a game, then adds that score to a total score in the database.
-if you lose a game your current score wont be added to the total score.
-You can also save an instance of a not finished game and have it ready when you log in the next time.
+if you lose a game your current score won't be added to the total score.
+You can also save an instance of a not finished game, and have it ready when you log in the next time.

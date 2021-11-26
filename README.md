@@ -13,10 +13,10 @@ Authentication is made with JWT.
 Everytime you log in or refresh the game, the server ask for the JWT witch gets stored in a cookie after getting registred or logging in
 If there is no such cookie or the token is expired the user gets rerouted to the login-register site.
 
-In this app I moved all the data in a database, the client has only access to a controller that sends user input to the server and receives the data already processed.
-Then passes that processed data to the view who dispalys everything in the browser.
+In this app I moved all the data in a database, the client has only access to a **controller** that sends user input to the server and receives the data already processed.
+Then passes that "processed data" to the **view**, who dispalys everything in the browser.
 
-The app sends and receives data with socket.io.
+The app sends and receives data with **socket.io**.
 On the client side everytime a user clicks on a game field or a button the data is passed to the server trough socket.io.
 On the server socket.io listens for requests and processes the sent data and sends a response to the user.
 The best thing is that with socket.io there can be multiple users connected, for each user a new game instace gets created and the data never gets mixed around.

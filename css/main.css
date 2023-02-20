@@ -1,6 +1,6 @@
 @font-face {
 	font-family: Joystix;
-	src: url('./joystix-monospace.ttf');
+	src: url("../fonts/joystix-monospace.ttf");
 }
 
 *,
@@ -94,9 +94,13 @@ body {
 }
 
 @keyframes spin {
-	0% { transform: rotate( 0deg ); }
-	100% { transform: rotate( 360deg ); }
-  }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
 
 .select-options {
 	color: #dfdfdf;
@@ -164,7 +168,7 @@ body {
 }
 
 .mine-field-line::after {
-	content: '';
+	content: "";
 	display: table;
 	clear: both;
 }
@@ -318,6 +322,6 @@ body {
 	#user-info {
 		top: 110%;
 		left: 50%;
-		transform: translateX( -50% );
+		transform: translateX(-50%);
 	}
 }

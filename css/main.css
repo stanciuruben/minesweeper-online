@@ -106,6 +106,17 @@ body {
 	color: #dfdfdf;
 }
 
+.register-warning {
+	text-align: center;
+	margin: 2rem 0;
+	padding: 2rem;
+	font-size: 1.6rem;
+}
+
+.register-warning__title {
+	display: block;
+}
+
 .form {
 	font-size: 1.5rem;
 	color: #dfdfdf;
@@ -260,6 +271,10 @@ body {
 }
 
 /* IDs */
+
+#app-container {
+	max-width: 50rem;
+} 
 
 #user-info {
 	white-space: nowrap;

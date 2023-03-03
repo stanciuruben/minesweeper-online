@@ -18,7 +18,7 @@ io.on("connection", minesweeperController);
 
 app.use(express.json({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, '/')));
 
 // Set Routes
 app.use("/register", require("./routes/register"));

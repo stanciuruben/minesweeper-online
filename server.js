@@ -1,5 +1,5 @@
 const express = require("express");
-const config = require("config");
+const path = require("path");
 const http = require("http");
 const socketio = require("socket.io");
 const connectDB = require("./db");

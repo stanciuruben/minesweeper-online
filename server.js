@@ -21,9 +21,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/')));
 
 // Set Routes
-app.use("/register", require("./routes/register"));
-app.use("/login", require("./routes/login"));
-app.use("/game", require("./routes/game"));
+app.use("/minesweeper/register", require("./routes/register"));
+app.use("/minesweeper/login", require("./routes/login"));
+app.use("/minesweeper/game", require("./routes/game"));
 
 const PORT = 3000; // config.get('PORT')
 

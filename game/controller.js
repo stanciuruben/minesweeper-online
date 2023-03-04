@@ -2,7 +2,7 @@
 
 var Socket = io(
     {
-        path: '/minesweeper/game',
+        path: '/game',
         extraHeaders: {
             token: document.cookie.split( "=" )[ 1 ]
         }

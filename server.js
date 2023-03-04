@@ -23,7 +23,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 const server = http.createServer(app);
 const io = socketio(server, {
-	path: '/minesweeper/game'
+	path: '/game'
 });
 
 connectDB();

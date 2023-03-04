@@ -2,6 +2,8 @@
 
 var Socket = io(
     {
+        path: '/game',
+        transports: ['websocket', 'polling'],
         extraHeaders: {
             token: document.cookie.split( "=" )[ 1 ]
         }

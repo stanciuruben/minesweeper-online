@@ -22,7 +22,10 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+	transports: ['websocket', 'polling'],
+	path: '/game'
+});
 
 connectDB();
 

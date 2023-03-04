@@ -2,7 +2,6 @@
 
 var Socket = io(
     {
-        path: '/game',
         extraHeaders: {
             token: document.cookie.split( "=" )[ 1 ]
         }

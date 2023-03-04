@@ -22,9 +22,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 const server = http.createServer(app);
-const io = socketio(server, {
-	path: '/game'
-});
+const io = socketio(server);
 
 connectDB();
 

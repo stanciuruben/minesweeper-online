@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
-const http = require("http");
-const socketio = require("socket.io");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 const connectDB = require("./db");
 const cors = require('cors');
 const minesweeperController = require("./socket-controller");
@@ -21,8 +21,8 @@ const corsOptions = {
 	credentials: true
 };
 app.use(cors(corsOptions));
-const server = http.createServer(app);
-const io = socketio(server);
+const httpServer = createServer(app);
+const io = new Server(httpServer);
 
 connectDB();
 
@@ -40,6 +40,6 @@ app.use("/game", require("./routes/game"));
 
 const PORT = 3000; // config.get('PORT')
 
-const listener = server.listen(PORT, () => {
+const listener = httpServer.listen(PORT, () => {
 	console.log("Node.js listening on port " + listener.address().port);
 });

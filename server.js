@@ -9,7 +9,9 @@ const cookieParser = require("cookie-parser");
 // Create Express Socket.io server
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+	path: '/minesweeper/game'
+});
 
 connectDB();
 

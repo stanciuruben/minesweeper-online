@@ -1,7 +1,8 @@
 "use strict";
 
-var Socket = io( 
+var Socket = io('http://localhost:3000',
     {
+        path: '/minesweeper/game',
         extraHeaders: {
             token: document.cookie.split( "=" )[ 1 ]
         }

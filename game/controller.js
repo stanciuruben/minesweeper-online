@@ -2,6 +2,7 @@
 
 var Socket = io(
     {
+        transports: ['websocket'],
         extraHeaders: {
             token: document.cookie.split( "=" )[ 1 ]
         }

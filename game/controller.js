@@ -8,8 +8,6 @@ var Socket = io(
     }
 );
 
-console.log(Socket);
-
 var Controller = ( function( View, Socket ) {
     var DomElements = View.getDomElements(),
         size = {

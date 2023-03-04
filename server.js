@@ -37,6 +37,7 @@ app.use(express.static(path.join(__dirname, '/')));
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/login"));
 app.use("/game", require("./routes/game"));
+app.use("/socket", require("./routes/client-socket-io"));
 
 const PORT = 3000; // config.get('PORT')
 

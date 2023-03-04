@@ -99,8 +99,7 @@
             }
             var token = parsedResponse.token;
             document.cookie = `minesweeper-auth-token=${token};`;
-            console.log(document.cookie);
-            window.location.replace('game');
+            window.location = 'game';
         }
 
         function handleFormSubmission() {

@@ -1,7 +1,7 @@
 "use strict";
 
 var Socket = io(
-    'http://46.41.148.88',
+    'http://localhost:3000',
     {
         path: '/minesweeper',
         rejectUnauthorized: false,

@@ -22,7 +22,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 const server = http.createServer(app);
-const io = socketio(3000);
+const io = socketio(server);
 
 connectDB();
 

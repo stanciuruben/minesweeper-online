@@ -88,7 +88,7 @@ var Controller = ( function( View, Socket ) {
     });
 
     Socket.on("connect_error", (err) => {
-        console.log(`connect_error due to ${err.message}`);
+        console.log(`connect_error due to ${err}`);
       });
 
     // Switch between values in menu based on sizes and difficulty object declared above

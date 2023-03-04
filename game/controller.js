@@ -1,6 +1,6 @@
 "use strict";
 
-var Socket = io('http://localhost:3000',
+var Socket = io('http://46.41.148.88',
     {
         path: '/minesweeper/game',
         extraHeaders: {

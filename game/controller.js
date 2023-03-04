@@ -1,8 +1,9 @@
 "use strict";
 
 var Socket = io(
-    'http://46.41.148.88/minesweeper',
+    'http://46.41.148.88',
     {
+        path: 'minesweeper',
         transports: ['websocket'],
         rejectUnauthorized: false,
         extraHeaders: {

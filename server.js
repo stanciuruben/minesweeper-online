@@ -22,7 +22,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 const server = http.createServer(app);
-const io = socketio(server, { transports: ['websocket',], rejectUnauthorized: false });
+const io = socketio(server);
 
 connectDB();
 

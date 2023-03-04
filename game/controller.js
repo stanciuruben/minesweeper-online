@@ -34,16 +34,19 @@ var Controller = ( function( View, Socket ) {
     // Socket emiters and receivers
     function loadGame() {
         Socket.emit( "load-game" );
+        console.log('client emits load-game');
     }
 
     Socket.on( "load-game", function( size )  {
         createNewgame( size );
         loadCellEvents();
         View.display( "game" );
+        console.log('client receives load-game');
     });
 
     Socket.on( "no-game", function()  {
         View.display( "menu" );
+        console.log('client receives no-game');
     });
 
     Socket.on( "game-lost", function( bombIds )  {
@@ -163,6 +166,7 @@ var Controller = ( function( View, Socket ) {
             View.display( "loading" );
             // Give some time to Socket.io to connect to the server
             setTimeout( loadGame, 3000);
+            console.log('loading');
         }
     }
 })( View, Socket );

@@ -22,7 +22,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio('http://46.41.148.88');
 
 connectDB();
 

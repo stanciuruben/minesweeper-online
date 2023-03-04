@@ -3,6 +3,7 @@
 var Socket = io(
     {
         transports: ['websocket'],
+        rejectUnauthorized: false,
         extraHeaders: {
             token: document.cookie.split( "=" )[ 1 ]
         }

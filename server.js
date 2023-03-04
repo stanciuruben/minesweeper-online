@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 
 // Create Express Socket.io server
 const app = express();
-const whitelist = ['http://46.41.148.88', 'http://www.rubenstanciu.com', 'https://www.rubenstanciu.com'];
+const whitelist = ['http://localhost:3000','http://46.41.148.88', 'http://www.rubenstanciu.com', 'https://www.rubenstanciu.com'];
 const corsOptions = {
 	origin: (origin, callback) => {
 		if (origin === undefined || whitelist.includes(origin)) {
@@ -22,9 +22,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 const server = http.createServer(app);
-const io = socketio(server, {
-	transports: ['websocket', 'polling'],
-});
+const io = socketio(server);
 
 connectDB();
 

@@ -1,14 +1,14 @@
 "use strict";
 
 var Socket = io(
-    'http://46.41.148.88',
     {
-        transports: ['websocket', 'polling'],
         extraHeaders: {
             token: document.cookie.split( "=" )[ 1 ]
         }
     }
 );
+
+console.log(Socket);
 
 var Controller = ( function( View, Socket ) {
     var DomElements = View.getDomElements(),
@@ -85,6 +85,10 @@ var Controller = ( function( View, Socket ) {
     Socket.on( "disconnect", function()  {
         window.location.replace('/minesweeper');
     });
+
+    Socket.on("connect_error", (err) => {
+        console.log(`connect_error due to ${err.message}`);
+      });
 
     // Switch between values in menu based on sizes and difficulty object declared above
     function onMenuClick( evnt ) {

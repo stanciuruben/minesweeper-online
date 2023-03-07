@@ -1,7 +1,7 @@
 "use strict";
 
 var Socket = io(
-    'http://46.41.148.88',
+    'https://46.41.148.88',
     {
         path: '/minesweeper',
         rejectUnauthorized: false,
@@ -89,7 +89,7 @@ var Controller = ( function( View, Socket ) {
 
     Socket.on("connect_error", (err) => {
         console.log(`connect_error due to ${err}`);
-      });
+    });
 
     // Switch between values in menu based on sizes and difficulty object declared above
     function onMenuClick( evnt ) {

@@ -3,7 +3,6 @@ const User = require('./models/User');
 const jwt = require('jsonwebtoken');
 
 const onSocketConnection = async socket => {
-    console.log('socket connected');
     const token = socket.handshake.headers.token;
     if ( !token ) {
         socket.disconnect();
@@ -63,19 +62,16 @@ const onSocketConnection = async socket => {
     }
 
     const loadGame = () => {
-        console.log('server receives load-game');
         isJwtExpired();
 
         let size = currentMineField.reduce( (size, element) => size + 1, 0);
         if ( size > 0) {
             socket.emit( 'load-game', size );
             socket.emit( 'uncover-cells', currentUncoveredCells );
-            console.log('server emits load-game');
             return;
         }
         socket.emit( 'no-game' );
         socket.emit( 'reset-score' );
-        console.log('server emits no-game');
     }
 
     const uncoverCell = async ( x, y, size ) => {

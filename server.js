@@ -1,15 +1,16 @@
 const express = require("express");
 const path = require("path");
+const { readFileSync } = require("fs");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const connectDB = require("./db");
 const cors = require('cors');
 const minesweeperController = require("./socket-controller");
 const cookieParser = require("cookie-parser");
+const { config } = require("process");
 
-// Create Express Socket.io server
 const app = express();
-const whitelist = ['http://localhost:3000','http://46.41.148.88', 'http://www.rubenstanciu.com', 'https://www.rubenstanciu.com'];
+const whitelist = ['https://46.41.148.88', 'https://www.rubenstanciu.com'];
 const corsOptions = {
 	origin: (origin, callback) => {
 		if (origin === undefined || whitelist.includes(origin)) {
@@ -21,13 +22,15 @@ const corsOptions = {
 	credentials: true
 };
 app.use(cors(corsOptions));
-const httpServer = createServer(app);
+const httpsServer = createServer({
+	cert: readFileSync(config.get('ssl-cert')),
+	key: readFileSync(config.get('ssl-key'))
+  });
 const io = new Server(httpServer);
 
 connectDB();
 
-// Connect sockets to minesweeper logic
-io.on("connection", minesweeperController);
+io.on("connection", () => console.log('connected to server'));
 
 app.use(express.json({ extended: false }));
 app.use(cookieParser());

@@ -3,7 +3,7 @@
 var Socket = io(
     'https://46.41.148.88',
     {
-        path: '/socket-io',
+        path: '/socket.io',
         rejectUnauthorized: false,
         extraHeaders: {
             token: document.cookie.split( "=" )[ 1 ]

@@ -7,7 +7,7 @@ const connectDB = require("./db");
 const cors = require('cors');
 const minesweeperController = require("./socket-controller");
 const cookieParser = require("cookie-parser");
-const { config } = require("process");
+const config = require("config");
 
 const app = express();
 const whitelist = ['https://46.41.148.88', 'https://www.rubenstanciu.com'];

@@ -26,7 +26,7 @@ const httpsServer = createServer({
 	cert: readFileSync(config.get('ssl-cert')),
 	key: readFileSync(config.get('ssl-key'))
   });
-const io = new Server(httpServer);
+const io = new Server(httpsServer);
 
 connectDB();
 
